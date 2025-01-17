@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Payment Kit-华为支付服务 | Beaten</title><meta name="keywords" content="华为HarmonyOS"><meta name="author" content="Beaten"><meta name="copyright" content="Beaten"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Payment Kit-华为支付服务"><meta name="application-name" content="Payment Kit-华为支付服务"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Payment Kit-华为支付服务"><meta property="og:url" content="http://example.com/2024/11/25/huawei/index.html"><meta property="og:site_name" content="Beaten"><meta property="og:description" content="Payment Kit-华为支付服务华为支付服务的主要应用场景包括商城购物和免密代扣，本文主要对其接入场景展开。 ArkTS API | paymentService(华为支付服务)该部分包括华为支付服务的API接口，requestPayment的起始版本都是4.1.0(11)，requestCon"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://47.104.228.228:8404/i/2024/11/25/6743e3492e0cb.jpg"><meta property="article:author" content="Beaten"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://47.104.228.228:8404/i/2024/11/25/6743e3492e0cb.jpg"><meta name="description" content="Payment Kit-华为支付服务华为支付服务的主要应用场景包括商城购物和免密代扣，本文主要对其接入场景展开。 ArkTS API | paymentService(华为支付服务)该部分包括华为支付服务的API接口，requestPayment的起始版本都是4.1.0(11)，requestCon"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2024/11/25/huawei/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"怎么又红温了?","backTitle":"♪(^∇^*)欢迎回来"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Beaten","link":"链接: ","source":"来源: Beaten","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Beaten',
+  title: 'Payment Kit-华为支付服务',
+  postAI: '',
+  pageFillDescription: 'Payment Kit-华为支付服务, ArkTS API | paymentService(华为支付服务), ArkTS API错误码, 签约代扣场景, 开发步骤, 预签约(服务器开发), 拉起华为支付签约收银台(端侧开发), 签约结果回调通知(服务器开发), 部署示例, IAP Kit, 简介, 开发准备, 部署示例华为支付服务华为支付服务的主要应用场景包括商城购物和免密代扣本文主要对其接入场景展开华为支付服务该部分包括华为支付服务的接口的起始版本都是的起始版本都是且接口均支持在元服务中使用在调用以下方法之前需要确保网络已连接导入模块上述两种方法均会提供基础支付支付并签约等功能调用该方法后会拉起收银台下文的方法都是如此不再赘述支付完成后分别使用异步返回和通过回调结果上述两种方法均会提供签约功能支付完成后分别使用异步返回和通过回调结果其中上下文不传会报参数错误拉起收银台传入的订单信息不传也会报拉起签约收银台入参不传也会报为回调函数签约成功为这里涉及到了错误码那么接下来进入错误码错误码错误码错误信息用户取消支付支付失败交易已处理重复下单签约失败重复请求每次入参都需要传入当前时间戳网络连接异常签约代扣场景通过接入签约代扣能力获取用户签约授权后可以向用户的账户发起扣款这里无需用户输入支付密码常用场景自动续费商户接入流程概述如下创建签约订单商户客户端请求商户服务端创建签约订单调用服务商户服务端调用的预签约接口获取预签约号返回合同参数服务端返回预签约号商户服务端构建参数并返回给商户客户端调起签约收银台商户客户端使用调用接口调起的签约收银台展示相关签约信息用户签约操作用户在收银台完成签约服务端确认并返回签约结果信息展示签约结果客户端展示签约结果用户关闭结果页后返回商户客户端签约结果回调签约完成后服务端调用商户服务端的回调接口返回签约结果签约结果验签商户服务器使用验签对签约结果进行验证申请免密代扣商户服务器调用服务端的免密代扣接口申请代扣服务返回代扣申请结果服务端同步返回代扣申请结果处理代扣服务端处理代扣请求成功后返回扣款结果信息给商户服务器扣款结果验签商户服务器使用验签对扣款结果进行验证接口的返回值有如下两种形式如下功能相同作用都是拉起签约收银台开发步骤预签约服务器开发开发者需要调用接口获取构建签约信息参数拉起华为支付签约收银台端侧开发商户客户端使用作为参数调用接口拉起收银台如果接口通过方法返回时表示当前订单支付成功若是方法返回则表示失败当有异常可以通过获得错误码如果用户没有登录则会拉起登录页面签约结果回调通知服务器开发签约成功后服务器会调用在模板中的回调接口传递给开发者签约订单的具体信息同时服务器还会对返回的支付信息进行验签请求示例与响应示例如下部署示例传送门华为支付服务客户端示例主要展示华为支付服务的单次支付能力入口项目结构如下本地部署运行简介对于的能力只支持实际的商品和服务不支持一些虚拟商品和虚拟服务的支付最火热的当然就是王者荣耀这款游戏在这里关于虚拟商品的支付我们可以接入应用内支付服务顾名思义要为应用内的支付提高体验和更加简便高效的实现应用内支付其包括消耗型商品非消耗型商品和自动续期订阅商品开发准备在配置应用这一步需要与当时创建应用时的报名保持相同配置内容如图配置应用身份信息首先需要登陆进行相关一系列操作在这里不过多赘述其中我们需要主要的是获取和后我们在工程的节点中加入这两个属性配置如图部署示例在这里我们使用部署应用内支付服务该工程当然您也可以部署到本地链接如下此示例实现了接入消耗型商品非消耗型商品自动续期订阅商品购买能力工程部署结构如下图结构解读公共组件工具组件用于解析购买数据日志打印组件所有的应用首页所有的页面消耗型商品对应的页面组件用于展示商品支付按钮等应用首页对应的页面组件用于展示消耗型商品购买非消耗型商品购买自动续期订阅商品购买按钮非消耗型商品对应的页面组件用于展示商品支付按钮等自动续期订阅商品对应的页面组件用于展示商品支付按钮跳转订阅订阅详情页等其中注意的几个地方例如文件中的修改为自己应用的包名上文已经提及以及和在文件中配置应用签名中的商品做替换要让商品和商品的类型匹配本地启动在手机端看一下效果如图在我们的主界面可以看到三个按钮消耗型商品购买非消耗型商品购买自动续期订阅商品购买点一个进去以后就可以看到商品信息以及相应金额得按钮点击后拉起收银台完成支付后返回到商品页弹出支付成功的提示这里所需依赖是需要登录华为账号',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-25 20:43:08',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="http://47.104.228.228:8404/i/2024/11/25/6743e37722422.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://beatenovo.cn/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://imgse.com/beaten/" title="Beaten图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="Beaten图床"/><span class="back-menu-item-text">Beaten图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Beaten</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 算法</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://codeforces.com/profile/Beaten/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> Codeforeces</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://leetcode.cn/u/beaten-67-ovo/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> LeetCode</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.kaggle.com/beaten67/"><i class="anzhiyufont anzhiyu-icon-square-poll-vertical faa-tada" style="font-size: 0.9em;"></i><span> Kaggle</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="http://47.104.228.228:8404/i/2024/11/25/674471f28efc9.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="http://47.104.228.228:8404/i/2024/11/25/674471f28efc9.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Codeforces/" style="font-size: 1.05rem;">Codeforces<sup>1</sup></a><a href="/tags/DP/" style="font-size: 1.05rem;">DP<sup>1</sup></a><a href="/tags/Langchain/" style="font-size: 1.05rem;">Langchain<sup>1</sup></a><a href="/tags/floyd/" style="font-size: 1.05rem;">floyd<sup>1</sup></a><a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 1.05rem;">位运算<sup>1</sup></a><a href="/tags/%E5%8D%8E%E4%B8%BAHarmonyOS/" style="font-size: 1.05rem;">华为HarmonyOS<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 1.05rem;">大模型<sup>1</sup></a><a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 1.05rem;">字节跳动<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 1.05rem;">数学建模<sup>1</sup></a><a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" style="font-size: 1.05rem;">最短路径<sup>1</sup></a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 1.05rem;">爬虫<sup>2</sup></a><a href="/tags/%E7%8A%B6%E5%8E%8Bdp/" style="font-size: 1.05rem;">状压dp<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%8D%8E%E4%B8%BAHarmonyOS/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>华为HarmonyOS</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Payment Kit-华为支付服务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-11-25T12:33:09.000Z" title="发表于 2024-11-25 20:33:09">2024-11-25</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-11-25T12:43:08.550Z" title="更新于 2024-11-25 20:43:08">2024-11-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="Payment Kit-华为支付服务"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="http://47.104.228.228:8404/i/2024/11/25/6743e3492e0cb.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2024/11/25/huawei/"><header><a href="/tags/%E5%8D%8E%E4%B8%BAHarmonyOS/" tabindex="-1" itemprop="url">华为HarmonyOS</a><h1 id="CrawlerTitle" itemprop="name headline">Payment Kit-华为支付服务</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Beaten</span><time itemprop="dateCreated datePublished" datetime="2024-11-25T12:33:09.000Z" title="发表于 2024-11-25 20:33:09">2024-11-25</time><time itemprop="dateCreated datePublished" datetime="2024-11-25T12:43:08.550Z" title="更新于 2024-11-25 20:43:08">2024-11-25</time></header><h1 id="Payment-Kit-华为支付服务"><a href="#Payment-Kit-华为支付服务" class="headerlink" title="Payment Kit-华为支付服务"></a>Payment Kit-华为支付服务</h1><p>华为支付服务的主要应用场景包括商城购物和免密代扣，本文主要对其接入场景展开。</p>
+<h2 id="ArkTS-API-paymentService-华为支付服务"><a href="#ArkTS-API-paymentService-华为支付服务" class="headerlink" title="ArkTS API | paymentService(华为支付服务)"></a>ArkTS API | paymentService(华为支付服务)</h2><p>该部分包括华为支付服务的API接口，requestPayment的起始版本都是4.1.0(11)，requestContract的起始版本都是5.5.0(12),且接口均支持在元服务中使用，在调用以下方法之前需要确保网络已连接！</p>
+<p><strong>导入模块</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; paymentService &#125; from &#x27;@kit.PaymentKit&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.paymentService.requestPayment</strong></p>
+<p>requestPayment(context: common.UIAbilityContext, orderStr: string): Promise<void></p>
+<p>requestPayment(context: common.UIAbilityContext, orderStr: string, callback: AsyncCallback<void>): void</p>
+<p>上述两种方法均会提供基础支付、支付并签约等功能，调用该方法后会拉起Payment Kit收银台(下文的方法都是如此，不再赘述)，支付完成后分别使用Promise异步返回和通过AsyncCallback回调结果。</p>
+<p><strong>2.paymentService.requestContract</strong></p>
+<p>requestContract(context: common.UIAbilityContext, contractStr: string): Promise<void></p>
+<p>requestContract(context: common.UIAbilityContext, contractStr: string, callback: AsyncCallback<void>): void</p>
+<p>上述两种方法均会提供签约功能。支付完成后分别使用Promise异步返回和通过AsyncCallback回调结果。</p>
+<p>其中,UIAbility上下文，不传会报401参数错误;order拉起收银台传入的订单信息，不传也会报401；contractStr拉起签约收银台入参，不传也会报401；callback为回调函数。签约成功error为undefined。这里涉及到了错误码，那么接下来进入错误码。</p>
+<h3 id="ArkTS-API错误码"><a href="#ArkTS-API错误码" class="headerlink" title="ArkTS API错误码"></a>ArkTS API错误码</h3><table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401</td>
+<td>Parameter error.</td>
+</tr>
+<tr>
+<td>1001930000</td>
+<td>用户取消支付</td>
+</tr>
+<tr>
+<td>1001930001</td>
+<td>支付失败</td>
+</tr>
+<tr>
+<td>1001930002</td>
+<td>交易已处理(重复下单)</td>
+</tr>
+<tr>
+<td>1001930003</td>
+<td>签约失败</td>
+</tr>
+<tr>
+<td>1001930010</td>
+<td>重复请求(每次入参都需要传入当前时间戳)</td>
+</tr>
+<tr>
+<td>1001930011</td>
+<td>网络连接异常</td>
+</tr>
+</tbody></table>
+<h2 id="签约代扣场景"><a href="#签约代扣场景" class="headerlink" title="签约代扣场景"></a>签约代扣场景</h2><p>通过接入Payment Kit签约代扣能力，获取用户签约授权后，可以向用户的账户发起扣款，这里无需用户输入支付密码。常用场景<strong>自动续费</strong></p>
+<p>商户接入流程概述如下：</p>
+<ol>
+<li><strong>创建签约订单</strong>: 商户客户端请求商户服务端创建签约订单。</li>
+<li><strong>调用Payment Kit服务</strong>: 商户服务端调用Payment Kit的预签约接口，获取预签约号（preSignNo）。</li>
+<li><strong>返回合同参数</strong>: Payment Kit服务端返回预签约号，商户服务端构建<code>contractStr</code>参数并返回给商户客户端。</li>
+<li><strong>调起签约收银台</strong>: 商户客户端使用<code>contractStr</code>调用<code>requestContract</code>接口，调起Payment Kit的签约收银台，展示相关签约信息。</li>
+<li><strong>用户签约操作</strong>: 用户在收银台完成签约，Payment Kit服务端确认并返回签约结果信息。</li>
+<li><strong>展示签约结果</strong>: Payment Kit客户端展示签约结果，用户关闭结果页后返回商户客户端。</li>
+<li><strong>签约结果回调</strong>: 签约完成后，Payment Kit服务端调用商户服务端的回调接口，返回签约结果。</li>
+<li><strong>签约结果验签</strong>: 商户服务器使用SM2验签对签约结果进行验证。</li>
+<li><strong>申请免密代扣</strong>: 商户服务器调用Payment Kit服务端的免密代扣接口申请代扣服务。</li>
+<li><strong>返回代扣申请结果</strong>: Payment Kit服务端同步返回代扣申请结果。</li>
+<li><strong>处理代扣</strong>: Payment Kit服务端处理代扣请求，成功后返回扣款结果信息给商户服务器。</li>
+<li><strong>扣款结果验签</strong>: 商户服务器使用SM2验签对扣款结果进行验证。</li>
+</ol>
+<p>接口的返回值有如下两种形式如下，功能相同，作用都是拉起签约收银台</p>
+<p>requestContract(context: common.UIAbilityContext, contractStr: string): Promise<void>；</p>
+<p>requestContract(context: common.UIAbilityContext, contractStr: string, callback: AsyncCallback<void>): void;</p>
+<h3 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h3><h4 id="预签约-服务器开发"><a href="#预签约-服务器开发" class="headerlink" title="预签约(服务器开发)"></a>预签约(服务器开发)</h4><p>开发者需要调用接口获取preSignNo构建签约信息参数contractStr</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6744600154429.png" alt="1732355810588"></p>
+<h4 id="拉起华为支付签约收银台-端侧开发"><a href="#拉起华为支付签约收银台-端侧开发" class="headerlink" title="拉起华为支付签约收银台(端侧开发)"></a>拉起华为支付签约收银台(端侧开发)</h4><p>商户客户端使用contractStr作为参数调用requestContract接口拉起收银台。如果接口通过.then()方法返回时表示当前订单支付成功,若是.catch()方法返回则表示失败。当request有异常可以通过error.code获得错误码。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/67446001cd5ce.png" alt="1732355282143"></p>
+<ul>
+<li>如果用户没有登录。则会拉起登录页面</li>
+</ul>
+<h4 id="签约结果回调通知-服务器开发"><a href="#签约结果回调通知-服务器开发" class="headerlink" title="签约结果回调通知(服务器开发)"></a>签约结果回调通知(服务器开发)</h4><p>签约成功后，服务器会调用在模板中的回调接口(callbackUrl)传递给开发者签约订单的具体信息，同时服务器还会对返回的支付信息进行SM2验签。</p>
+<p>请求示例与响应示例如下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6744600234451.png" alt="1732355765523"></p>
+<h2 id="部署示例"><a href="#部署示例" class="headerlink" title="部署示例"></a>部署示例</h2><p>传送门</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/harmonyos_samples/payment-kit-sample-code-clientdemo-arkts">PaymentKit-SampleCode-Clientdemo-ArkTS: 华为支付服务客户端示例主要展示华为支付服务的单次支付能力入口。</a></p>
+<p>项目结构如下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6744600dd291c.png" alt="1732356033527"></p>
+<p>本地部署运行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6744600e74d6a.png" alt="1732356298823"></p>
+<h1 id="IAP-Kit"><a href="#IAP-Kit" class="headerlink" title="IAP Kit"></a>IAP Kit</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>对于Payment Kit的能力只支持实际的商品和服务，不支持一些虚拟商品和虚拟服务的支付，最火热的当然就是王者荣耀这款游戏。在这里，关于虚拟商品的支付我们可以接入IAP Kit（应用内支付服务）顾名思义，IAP Kit要为应用内的支付提高体验和更加简便，高效的实现应用内支付，其包括消耗型商品、非消耗型商品和自动续期订阅商品。</p>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6744600f5a2b1.png" alt="image-20241123131455621"></p>
+<p>在配置应用这一步<strong>bundleName</strong>需要与当时创建应用时的报名保持相同，配置内容如图，</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6744601032913.png" alt="1732349784695"></p>
+<p>配置应用身份信息，首先需要登陆<a target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/service/josp/agc/index.html">AppGallery Connect</a>进行相关一系列操作，在这里不过多赘述。其中我们需要主要的是获取APP ID 和Client ID 后，我们在工程的module节点中加入这两个属性配置，如图</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/67446010eee32.png" alt="1732350218806"></p>
+<h2 id="部署示例-1"><a href="#部署示例-1" class="headerlink" title="部署示例"></a>部署示例</h2><p>在这里我们使用DevEco Studio部署应用内支付服务该工程，当然您也可以部署到本地  </p>
+<p>链接如下：</p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/harmonyos_samples/iapkit-sample-clientdemo-arkts">IAPKit-Sample-Clientdemo-ArkTS: 此示例实现了接入IAP Kit消耗型商品、非消耗型商品、自动续期订阅商品购买能力。</a></p>
+<p>工程部署结构如下图</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/67446011e8cf2.png" alt="1732350770728"></p>
+<p>结构解读</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">└── entry/src/main/ets</span><br><span class="line">    └── common // 公共组件</span><br><span class="line">    │   └── JWTUtil.ts // JWT工具组件，用于解析购买数据</span><br><span class="line">    │   └── Logger.ts // 日志打印组件</span><br><span class="line">    │</span><br><span class="line">    └── entryability // 所有的ability</span><br><span class="line">    │   └── EntryAbility.ets // 应用首页ability</span><br><span class="line">    │</span><br><span class="line">    └── pages // 所有的页面</span><br><span class="line">        └── ConsumablesPage.ets // 消耗型商品对应的页面组件，用于展示商品、支付按钮等</span><br><span class="line">        └── EntryPage.ets // 应用首页对应的页面组件，用于展示消耗型商品购买、非消耗型商品购买、自动续期订阅商品购买按钮</span><br><span class="line">        └── NonConsumablesPage.ets // 非消耗型商品对应的页面组件，用于展示商品、支付按钮等</span><br><span class="line">        └── SubscriptionsPage.ets // 自动续期订阅商品对应的页面组件，用于展示商品、支付按钮、跳转订阅/订阅详情页等</span><br></pre></td></tr></table></figure>
+
+<p>其中注意的几个地方，例如AppScope&#x2F;app.json5文件中的bundleName修改为自己应用的包名，上文已经提及，以及client_id和app_id。在build-profile.json5文件中配置应用签名，demo中的商品做替换要让商品ID和商品的类型匹配。</p>
+<p>本地启动demo在手机端看一下效果,如图</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/674460131ba33.png" alt="1732351031260"></p>
+<p>在我们的主界面可以看到三个按钮：Consumables：消耗型商品购买。NonConsumables：非消耗型商品购买。Subscriptions：自动续期订阅商品购买。点一个进去以后就可以看到商品信息以及相应金额得按钮，点击后拉起收银台，完成支付后，返回到商品页，弹出支付成功的提示。</p>
+<p>这里所需依赖是需要登录华为账号</p>
+</article><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/11/25/acm1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e31dd39b7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">动态规划入门题目| MarsCode</div></div></a></div><div class="next-post pull-right"><a href="/2024/12/07/selenium/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e330876e2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用selenium技术在淘宝中进行自动化订单</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e376d09b5.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">青春网瘾少年梦不到ACM牌子</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Beaten</h1><div class="author-info__desc">芜湖</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/beatenevo" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://blog.csdn.net/shenshan_?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(http://47.104.228.228:8404/i/2024/11/25/6743e9b07e9bc.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Payment-Kit-%E5%8D%8E%E4%B8%BA%E6%94%AF%E4%BB%98%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">Payment Kit-华为支付服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ArkTS-API-paymentService-%E5%8D%8E%E4%B8%BA%E6%94%AF%E4%BB%98%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">ArkTS API | paymentService(华为支付服务)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArkTS-API%E9%94%99%E8%AF%AF%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">ArkTS API错误码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E7%BA%A6%E4%BB%A3%E6%89%A3%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.</span> <span class="toc-text">签约代扣场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text">开发步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E7%AD%BE%E7%BA%A6-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">预签约(服务器开发)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E8%B5%B7%E5%8D%8E%E4%B8%BA%E6%94%AF%E4%BB%98%E7%AD%BE%E7%BA%A6%E6%94%B6%E9%93%B6%E5%8F%B0-%E7%AB%AF%E4%BE%A7%E5%BC%80%E5%8F%91"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">拉起华为支付签约收银台(端侧开发)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%BE%E7%BA%A6%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83%E9%80%9A%E7%9F%A5-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">签约结果回调通知(服务器开发)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">部署示例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IAP-Kit"><span class="toc-number">2.</span> <span class="toc-text">IAP Kit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87"><span class="toc-number">2.2.</span> <span class="toc-text">开发准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">2.3.</span> <span class="toc-text">部署示例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/12/07/selenium/" title="使用selenium技术在淘宝中进行自动化订单"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e330876e2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用selenium技术在淘宝中进行自动化订单"/></a><div class="content"><a class="title" href="/2024/12/07/selenium/" title="使用selenium技术在淘宝中进行自动化订单">使用selenium技术在淘宝中进行自动化订单</a><time datetime="2024-12-07T11:28:20.000Z" title="发表于 2024-12-07 19:28:20">2024-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/25/huawei/" title="Payment Kit-华为支付服务"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e3492e0cb.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Payment Kit-华为支付服务"/></a><div class="content"><a class="title" href="/2024/11/25/huawei/" title="Payment Kit-华为支付服务">Payment Kit-华为支付服务</a><time datetime="2024-11-25T12:33:09.000Z" title="发表于 2024-11-25 20:33:09">2024-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/25/acm1/" title="动态规划入门题目| MarsCode"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e31dd39b7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="动态规划入门题目| MarsCode"/></a><div class="content"><a class="title" href="/2024/11/25/acm1/" title="动态规划入门题目| MarsCode">动态规划入门题目| MarsCode</a><time datetime="2024-11-25T11:57:40.000Z" title="发表于 2024-11-25 19:57:40">2024-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/06/hello-world/" title="LangChain文档OA系统与提示工程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e3438c094.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LangChain文档OA系统与提示工程"/></a><div class="content"><a class="title" href="/2024/11/06/hello-world/" title="LangChain文档OA系统与提示工程">LangChain文档OA系统与提示工程</a><time datetime="2024-11-06T03:16:26.000Z" title="发表于 2024-11-06 11:16:26">2024-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/30/acm2/" title="CF Round 963-Div.2 | E. Xor-Grid Problem（最短路径/floyd/位运算/状压dp）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e34661f68.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CF Round 963-Div.2 | E. Xor-Grid Problem（最短路径/floyd/位运算/状压dp）"/></a><div class="content"><a class="title" href="/2024/09/30/acm2/" title="CF Round 963-Div.2 | E. Xor-Grid Problem（最短路径/floyd/位运算/状压dp）">CF Round 963-Div.2 | E. Xor-Grid Problem（最短路径/floyd/位运算/状压dp）</a><time datetime="2024-09-30T12:02:39.000Z" title="发表于 2024-09-30 20:02:39">2024-09-30</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/beatenevo" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://47.104.228.228:8404/i/2024/11/25/6743e376d09b5.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://blog.csdn.net/shenshan_?spm=1000.2115.3001.5343" title="CSDN"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2025 By <a class="footer-bar-link" href="/" title="Beaten" target="_blank">Beaten</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    window.typed = new Typed("#footer-type-tips", {
+      strings: ["芜湖"],
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("footer-type-tips").innerHTML = '芜湖'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://beatenovo.cn/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://imgse.com/beaten/" title="Beaten图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="Beaten图床"/><span class="back-menu-item-text">Beaten图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 算法</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://codeforces.com/profile/Beaten/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> Codeforeces</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://leetcode.cn/u/beaten-67-ovo/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> LeetCode</span></a></li><li><a class="site-page child faa-parent animated-hover" target="_blank" rel="noopener" href="https://www.kaggle.com/beaten67/"><i class="anzhiyufont anzhiyu-icon-square-poll-vertical faa-tada" style="font-size: 0.9em;"></i><span> Kaggle</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Codeforces/" style="font-size: 0.88rem;">Codeforces<sup>1</sup></a><a href="/tags/DP/" style="font-size: 0.88rem;">DP<sup>1</sup></a><a href="/tags/Langchain/" style="font-size: 0.88rem;">Langchain<sup>1</sup></a><a href="/tags/floyd/" style="font-size: 0.88rem;">floyd<sup>1</sup></a><a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 0.88rem;">位运算<sup>1</sup></a><a href="/tags/%E5%8D%8E%E4%B8%BAHarmonyOS/" style="font-size: 0.88rem;">华为HarmonyOS<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="font-size: 0.88rem;">大模型<sup>1</sup></a><a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 0.88rem;">字节跳动<sup>1</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 0.88rem;">数学建模<sup>1</sup></a><a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" style="font-size: 0.88rem;">最短路径<sup>1</sup></a><a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 0.88rem;">爬虫<sup>2</sup></a><a href="/tags/%E7%8A%B6%E5%8E%8Bdp/" style="font-size: 0.88rem;">状压dp<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2023 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Beaten 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
